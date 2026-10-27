@@ -1,0 +1,23 @@
+[Unit]
+Description=ZXJB14A DW20261014 C monitor (static)
+# 此文件仅用于有zxjb14a硬件初始化服务的系统；ATK/Buildroot不能直接照搬。
+Requires=zxjb14a-hardware-prepare.service
+After=zxjb14a-hardware-prepare.service
+Conflicts=zxjb14a-monitor.service zxjb14a-monitor-cpp.service zxjb14a-gateway.service
+
+[Service]
+Type=notify
+NotifyAccess=main
+WatchdogSec=10
+TimeoutStartSec=30
+WorkingDirectory=/opt/zxjb14a-monitor-c
+StateDirectory=zxjb14a-monitor-c
+StateDirectoryMode=0750
+ExecStartPre=/opt/zxjb14a-monitor-c/bin/zxjb14a_monitor_c --config /opt/zxjb14a-monitor-c/config/monitor.json --check-config
+ExecStart=/opt/zxjb14a-monitor-c/bin/zxjb14a_monitor_c --config /opt/zxjb14a-monitor-c/config/monitor.json
+Restart=on-failure
+RestartSec=5
+TimeoutStopSec=10
+
+[Install]
+WantedBy=multi-user.target

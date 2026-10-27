@@ -1,0 +1,126 @@
+{
+  "protocol": "aux_monitor_dw_20261014",
+  "site_mapping_confirmed": false,
+  "device_address": 11,
+  "can_bitrate_kbit": 250,
+  "can_interfaces": [
+    "can0",
+    "can1"
+  ],
+  "report_destinations": [
+    1,
+    2
+  ],
+  "report_buses": "both",
+  "control_sources": [
+    1,
+    2,
+    6,
+    7,
+    8
+  ],
+  "allow_broadcast_control": false,
+  "parameters_enabled": false,
+  "heartbeat_enabled": false,
+  "runtime_settings": "/var/lib/zxjb14a-monitor-c/runtime-1.7.0.json",
+  "heartbeat_ms": 2000,
+  "report_ms": 2000,
+  "frame_gap_ms": 1,
+  "dedup_ms": 4000,
+  "stale_ms": 6000,
+  "queue_limit": 32,
+  "ports": [
+    {
+      "physical": 1,
+      "channel": 1,
+      "path": "/dev/ttyCH343USB0",
+      "enabled": true,
+      "baudrate": 9600,
+      "parity": "N",
+      "stopbits": 1,
+      "devices": []
+    },
+    {
+      "physical": 2,
+      "channel": 2,
+      "path": "/dev/ttyCH343USB1",
+      "enabled": true,
+      "baudrate": 9600,
+      "parity": "N",
+      "stopbits": 1,
+      "devices": []
+    },
+    {
+      "physical": 3,
+      "channel": 3,
+      "path": "/dev/ttyCH343USB2",
+      "enabled": true,
+      "baudrate": 9600,
+      "parity": "N",
+      "stopbits": 1,
+      "devices": []
+    },
+    {
+      "physical": 4,
+      "channel": 4,
+      "path": "/dev/ttyCH343USB3",
+      "enabled": true,
+      "baudrate": 9600,
+      "parity": "N",
+      "stopbits": 1,
+      "devices": []
+    },
+    {
+      "physical": 5,
+      "channel": 5,
+      "path": "/dev/ttyCH343USB4",
+      "enabled": true,
+      "baudrate": 9600,
+      "parity": "N",
+      "stopbits": 1,
+      "devices": []
+    },
+    {
+      "physical": 6,
+      "channel": 6,
+      "path": "/dev/ttyCH343USB5",
+      "enabled": true,
+      "baudrate": 9600,
+      "parity": "N",
+      "stopbits": 1,
+      "devices": []
+    },
+    {
+      "physical": 7,
+      "channel": 7,
+      "path": "/dev/ttyCH343USB6",
+      "enabled": true,
+      "baudrate": 9600,
+      "parity": "N",
+      "stopbits": 1,
+      "devices": []
+    },
+    {
+      "physical": 8,
+      "channel": 8,
+      "path": "/dev/ttyCH343USB7",
+      "enabled": true,
+      "baudrate": 9600,
+      "parity": "N",
+      "stopbits": 1,
+      "devices": []
+    }
+  ],
+  "query_sources": [
+    1,
+    2,
+    6,
+    7,
+    8
+  ],
+  "customer_gateway": true,
+  "authorization_enabled": false,
+  "can_rate_enabled": true,
+  "can_rate_both": true,
+  "can_rate_state_file": "/var/lib/zxjb14a-monitor-c/can-rates-1.7.0"
+}

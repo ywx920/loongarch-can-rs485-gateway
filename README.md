@@ -20,12 +20,11 @@
 ```sh
 sudo apt-get update
 sudo apt-get install build-essential cmake python3
-cmake -S monitor-c -B build/native -DCMAKE_BUILD_TYPE=Debug -DMONITOR_BUILD_TESTS=ON
+cmake -S monitor-c -B build/native -DCMAKE_BUILD_TYPE=Debug 
 cmake --build build/native -j2
-ctest --test-dir build/native --output-on-failure
 ```
 
-原生程序用于主机软件检查，不能拿x86产物部署龙芯板。可选vcan测试在无环境时跳过。
+原生构建用于主机编译检查，不能拿x86产物部署龙芯板。按用户公开范围要求，旧设备/寄存器配置示例已移除，测试目录未公开，当前快照只构建生产程序，不能在此运行内部完整回归。内部工程与历史测试证据不因此改变。
 
 ## 龙芯静态交叉编译
 
@@ -58,4 +57,8 @@ runtime参数可能覆盖主JSON，换箱/分组前应停服务并备份核对�
 
 ## 公开内容
 
-只包含当前C源码、测试、构建工具、配置模板、通用说明与通道部署包。不含客户原始协议文件、现场抓包/登录记录、账号密码、SSH密钥、工具链、旧Git历史或C++冻结参考。此项目未指定开源许可证，公开访问不等同于授予任意再分发许可。
+只包含当前C源码、构建工具、配置模板、通用说明与通道部署包。不含客户原始协议文件、现场抓包/登录记录、账号密码、SSH密钥、工具链、旧Git历史或C++冻结参考。此项目未指定开源许可证，公开访问不等同于授予任意再分发许可。
+
+公开范围确认：不含旧设备/寄存器轮询配置及CSV，部署包仅保留通用箱11/通道/串口/CAN模板；这次只发布快照，不声称已重新执行硬件或全套软件验收。
+
+公开快照不包含授权测试示例及历史测试目录，完整测试保留在本地开发工程。

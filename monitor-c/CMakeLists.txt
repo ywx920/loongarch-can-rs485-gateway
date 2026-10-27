@@ -1,0 +1,26 @@
+cmake_minimum_required(VERSION 3.16)
+project(zxjb14a_monitor_c VERSION 1.9.1 LANGUAGES C)
+# 本工程只生成静态可执行文件；即使调用者忘记传-static也保持发布约束。
+if(NOT CMAKE_SYSTEM_NAME STREQUAL "Linux")
+    message(FATAL_ERROR "Build inside Linux/WSL2")
+endif()
+# 仅sanitizer诊断构建允许关闭；发布/交叉构建保持默认ON。
+option(MONITOR_STATIC "Link release executables statically" ON)
+if(MONITOR_STATIC)
+    add_link_options(-static)
+endif()
+set(CMAKE_C_STANDARD 11)
+set(CMAKE_C_STANDARD_REQUIRED ON)
+set(CMAKE_C_EXTENSIONS OFF)
+add_library(monitor_c_core src/config.c src/protocol.c src/engine.c src/io_runtime.c src/status_report.c src/site_check.c src/hardware_check.c src/sha256.c src/service_notify.c src/capabilities.c src/can_rate.c src/can_guard.c)
+target_include_directories(monitor_c_core PUBLIC include)
+target_compile_options(monitor_c_core PRIVATE -Wall -Wextra -Wpedantic)
+target_link_libraries(monitor_c_core PUBLIC m)
+if(CMAKE_SYSTEM_NAME STREQUAL "Linux")
+    add_executable(zxjb14a_monitor_c src/main_linux.c src/board_led.c)
+    target_link_libraries(zxjb14a_monitor_c PRIVATE monitor_c_core)
+    target_compile_options(zxjb14a_monitor_c PRIVATE -Wall -Wextra -Wpedantic)
+    install(TARGETS zxjb14a_monitor_c RUNTIME DESTINATION bin)
+endif()
+
+# Public snapshot contains production sources only; historical fixtures and authorization tests are omitted.

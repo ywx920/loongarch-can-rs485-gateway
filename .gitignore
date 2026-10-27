@@ -1,0 +1,8 @@
+build/
+monitor-c/build/
+__pycache__/
+*.pyc
+*.log
+.env
+*.pem
+*.key
